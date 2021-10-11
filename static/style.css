@@ -1,3 +1,16 @@
 .container {
     max-width: 1000px;
   }
+
+.color-container{
+    display: flex;
+    align-content: center;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+
+.filetype-container{
+  display: flex;
+}
