@@ -7,10 +7,14 @@ from PIL import ImageColor
 filenames = []
 
 app = Flask(__name__)
-app.config["SECRET_KEY"] = "328489f5a3ddecc38ecad56b97441a48d9c9a186"
+# Replace it with any secret key and keep it secret
+app.config["SECRET_KEY"] = "Your_Private_Secret_key"
 
 
 def generate_qrcode(text):
+    '''
+    This function will take the text as parameter and will generate the QRCode
+    '''
     qr = pyqrcode.QRCode(text)
     filename = session["filename"]
     if not os.path.exists("static/temp"):
@@ -32,6 +36,9 @@ def generate_qrcode(text):
 
 
 def set_filename(text):
+    '''
+    Set a unique filename for each session text data
+    '''
     text = (
         text
         + session["background_hex"]
@@ -47,6 +54,9 @@ def set_filename(text):
 
 
 def remove_extra_files():
+    '''
+    Remove the extra QRCode files that will be created at the temp directory
+    '''
     if len(filenames) > 20:
         for files in filenames[0:10]:
             filenames.pop(filenames.index(files))
