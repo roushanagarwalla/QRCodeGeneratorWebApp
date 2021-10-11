@@ -1,16 +1,120 @@
-.container {
-    max-width: 1000px;
-  }
-
-.color-container{
-    display: flex;
-    align-content: center;
-    flex-wrap: nowrap;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: flex-end;
+:root[color-mode=dark] {
+  --bg-color: #14151b;
+  --text-color: #dce3f9;
+  --heading-color: #fff;
+  --link-color: #fff;
+  --textarea-bg: #1A202C;
+  --textarea-color: #fff;
+  --textarea-bordercolor: black;
+  --textarea-boxsahdow: 0 0 0 0.15rem rgb(225 225 255 / 75%);
 }
 
-.filetype-container{
+:root[color-mode=light] {
+  --bg-color: #fff;
+  --text-color: #000;
+  --heading-color: #121212;
+  --link-color: blue;
+  --textarea-bg: #fff;
+  --textarea-color: #1A202C;
+  --textarea-bordercolor: #ddd;
+  --textarea-boxsahdow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
+}
+
+textarea {
+  background: var(--textarea-bg)!important;
+  color: var(--textarea-color)!important;
+  border-color: var(--textarea-bordercolor)!important;
+}
+
+textarea:focus {
+  box-shadow: var(--textarea-boxsahdow)!important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--heading-color)!important;
+}
+
+a {
+  color: var(--link-color)!important;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.btn-primary {
+  color: white!important;
+}
+
+body {
+  background-color: var(--bg-color)!important;
+  color: var(--text-color)!important;
+}
+
+.header {
   display: flex;
+  align-items: center;
+}
+
+.container {
+  max-width: 1000px;
+}
+
+.color-container {
+  display: flex;
+  align-content: center;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+.filetype-container {
+  display: flex;
+  margin-top: 0.75rem;
+}
+
+:root[color-mode="light"] .color-mode .light--hidden {
+  display: none;
+}
+
+:root[color-mode="dark"] .color-mode .dark--hidden {
+  display: none;
+}
+
+.color-mode {
+  padding: .8rem;
+  margin-left: auto;
+}
+
+.color-mode__btn {
+  display: flex;
+  align-items: flex-end;
+  justify-content: right;
+  line-height: 1;
+  color: var(--text-color);
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.color-mode__btn svg {
+  width: 30px;
+  height: 30px;
+  margin-left: 7px;
+  fill: none;
+  stroke: var(--text-color);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.5px;
+}
+
+.color-mode__btn:hover svg, .color-mode__btn:focus svg, .color-mode__btn:focus {
+  outline: none;
+  fill: #fff7d6;
+  fill: var(--tertiary, #fff7d6);
+}
+
+.menu-toggle {
+  display: none;
 }

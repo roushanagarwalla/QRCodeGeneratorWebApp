@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html color-mode="dark">
   <head>
     <link
       rel="apple-touch-icon"
@@ -32,11 +32,62 @@
     />
     <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}" />
     <title>QrCode Generator</title>
+    <svg style="display: none">
+      <symbol viewBox="0 0 24 24" id="moon">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+      </symbol>
+      <symbol viewBox="0 0 24 24" id="sun">
+        <circle cx="12" cy="12" r="5"></circle>
+        <line x1="12" y1="1" x2="12" y2="3"></line>
+        <line x1="12" y1="21" x2="12" y2="23"></line>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+        <line x1="1" y1="12" x2="3" y2="12"></line>
+        <line x1="21" y1="12" x2="23" y2="12"></line>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+      </symbol>
+      <symbol viewBox="0 0 20 20" fill="currentColor" id="clock">
+        <path
+          fill="#aaa"
+          fill-rule="evenodd"
+          d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
+          clip-rule="evenodd"
+        />
+      </symbol>
+      <symbol viewBox="0 0 20 20" fill="currentColor" id="tag">
+        <path
+          fill="#aaa"
+          fill-rule="evenodd"
+          d="M17.707 9.293a1 1 0 010 1.414l-7 7a1 1 0 01-1.414 0l-7-7A.997.997 0 012 10V5a3 3 0 013-3h5c.256 0 .512.098.707.293l7 7zM5 6a1 1 0 100-2 1 1 0 000 2z"
+          clip-rule="evenodd"
+        />
+      </symbol>
+    </svg>
   </head>
   <body>
     <div class="container">
-      <h1 class="text-center mt-3">QR Code Generator</h1>
-      <p class="text-center">Developed By <a href="https://github.com/roushanagarwalla" target="_blank">Roushan Agarwalla</a></p>
+      <div class="header mt-3">
+        <h1 class="text-center h2">QR Code Generator</h1>
+        <div class="color-mode">
+          <button
+            class="color-mode__btn light--hidden"
+            aria-label="Toggle light mode"
+          >
+            <svg aria-hidden="true">
+              <use href="#sun"></use>
+            </svg>
+          </button>
+          <button
+            class="color-mode__btn dark--hidden"
+            aria-label="Toggle dark mode"
+          >
+            <svg aria-hidden="true">
+              <use href="#moon"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
       <form class="my-4" role="form" method="POST" action="/">
         <div class="form-group">
           <textarea
@@ -97,7 +148,7 @@
           Submit
         </button>
       </form>
-      <br>
+      <br />
       {% if results['filename'] %}
       <div id="results">
         <h2 class="text-center">Generated QR Code</h2>
@@ -105,7 +156,7 @@
           <a
             href="/download"
             style="margin: 0 auto"
-            class="btn btn-primary"
+            class="btn btn-primary my-4"
             onclick="remove_result()"
             >Download</a
           >
@@ -118,6 +169,12 @@
       </div>
       {% endif %}
     </div>
+    <p class="text-center">
+      Developed By
+      <a href="https://github.com/roushanagarwalla" target="_blank"
+        >Roushan Agarwalla</a
+      >
+    </p>
     <script src="{{ url_for('static', filename='main.js') }}"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
